@@ -5,13 +5,16 @@
             "PHPMin\\": "src/"
         }
     },
+
     "authors": [
         {
             "name": "Luke Hayes",
             "email": "lukepurplehayes@gmail.com"
         }
     ],
+
     "require-dev": {
-        "symfony/var-dumper": "^6.1"
+        "symfony/var-dumper": "^6.1",
+        "phpunit/phpunit": "^9.5"
     }
 }
