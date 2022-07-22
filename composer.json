@@ -1,0 +1,17 @@
+{
+    "name": "luke/php-min",
+    "autoload": {
+        "psr-4": {
+            "PHPMin\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Luke Hayes",
+            "email": "lukepurplehayes@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^6.1"
+    }
+}
