@@ -50,6 +50,32 @@ class Router
 		return $this->routes;
 	}
 
+	public function matchRoute()
+	{
+		$uri     = $_SERVER['REQUEST_URI'];
+		$method  = $_SERVER['REQUEST_METHOD'];
+		$routes  = $this->routes[$method];
+		$matches = [];
+		
+		// TODO Implement route pattern matching.
+		foreach($routes as $pattern => $fn)
+		{
+			dump($pattern);
+			$pattern .= "/";
+			dump(preg_match("$pattern", $uri));
+		}
+		//preg_match($routes[$uri])	
+
+		//if(array_key_exists($uri, $routes))
+		//{
+			//$route = $routes[$uri];
+			//$route();
+		//}else
+		//{
+			//dump("Error.");
+		//}
+	}
+
 	/**
 	 * Get a list of all defined routes.
 	 *
