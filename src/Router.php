@@ -16,4 +16,14 @@ class Router
 
 		return $this->routes;
 	}
+
+	/**
+	 * Get a list of all defined routes.
+	 *
+	 * @return array
+	 */
+	public function getRoutes() : array
+	{
+		return $this->routes;
+	}
 }
