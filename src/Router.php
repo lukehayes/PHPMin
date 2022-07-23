@@ -57,24 +57,52 @@ class Router
 		$routes  = $this->routes[$method];
 		$matches = [];
 		
-		// TODO Implement route pattern matching.
+
+		dump($routes);
+
+
+		// Check if a pattern matches using a regex.
 		foreach($routes as $pattern => $fn)
 		{
-			dump($pattern);
-			$pattern .= "/";
-			dump(preg_match("$pattern", $uri));
+			$pattern = preg_replace("/\//", "", $pattern);
+			$regex_pattern = "~$pattern~";
+			if(preg_match($regex_pattern, $uri))
+			{
+				$fn();
+				return;
+			}
 		}
-		//preg_match($routes[$uri])	
+		
+		// TODO Implement route regex pattern matching.
 
-		//if(array_key_exists($uri, $routes))
-		//{
-			//$route = $routes[$uri];
-			//$route();
-		//}else
-		//{
-			//dump("Error.");
-		//}
+		// Check for an explict/litteral match of URI to pattern.
+		if(array_key_exists($uri, $routes))
+		{
+			$route = $routes[$uri];
+
+			if(is_callable($route))
+			{
+				// Anonymous function call.
+				$route();
+			}else
+			{
+				// TODO Implement properly.
+				//
+				// "Controller@method" call.
+				$sections   = preg_split("/@/", $route);
+				$controller = $sections[0];
+				$action     = $sections[1];
+
+				echo "Loading $controller->$action()";
+			}
+
+		}
+		else
+		{
+			throw new \Exception("Route for $uri could not be found");
+		}
 	}
+
 
 	/**
 	 * Get a list of all defined routes.
