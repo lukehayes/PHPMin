@@ -123,8 +123,6 @@ class Router
 				$route();
 			}else
 			{
-				// TODO Implement properly.
-				//
 				// "Controller@method" call.
 				$sections   = preg_split("/@/", $route);
 				$controller = $sections[0];
