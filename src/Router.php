@@ -94,7 +94,6 @@ class Router
 			$pattern = preg_replace("/\//", "", $pattern);
 			if(preg_match("~$pattern$~", $this->uri, $matches) && !$route_found)
 			{
-				dump($matches);
 				if($matches[0] == trim($this->uri,"/"))
 				{
 					$route_found = true;
