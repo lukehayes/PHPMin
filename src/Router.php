@@ -3,6 +3,10 @@ namespace PHPMin;
 
 class Router
 {
+	/**
+	 * @var array $routes
+	 *
+	 * All defined routes available to to router object. */
 	private $routes = [];
 
 
