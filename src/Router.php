@@ -4,19 +4,19 @@ namespace PHPMin;
 class Router
 {
 	/**
-	 * @var array $routes
+	 * @var array $routes.
 	 *
 	 * All defined routes available to to router object. */
 	private $routes = [];
 
 	/**
-	 * @var string $uri
+	 * @var string $uri.
 	 *
 	 * The current REQUEST_URI that has been sent to the router. */
 	private $uri = NULL;
 
 	/**
-	 * @var string $method
+	 * @var string $method.
 	 *
 	 * The current REQUEST_METHOD that has been sent to the router. */
 	private $method = NULL;
@@ -41,9 +41,9 @@ class Router
 	 * @param string $pattern    The url pattern that applies to this route.
 	 *
 	 * @param mixed  $fn         Closure or "nameController@method" can be used
-	 *                           for the defined route,
+	 *                           for the defined route.
 	 *
-	 * @return array
+	 * @return array.
 	 */
 	public function addRoute($methods, $pattern, $fn)
 	{
@@ -60,9 +60,9 @@ class Router
 	 * @param string $pattern    The url pattern that applies to this route.
 	 *
 	 * @param mixed  $fn         Closure or "nameController@method" can be used
-	 *                           for the defined route,
+	 *                           for the defined route.
 	 *
-	 * @return array
+	 * @return array.
 	 */
 	private function loadRoutes($methods, $pattern, $fn) : array
 	{
@@ -166,7 +166,7 @@ class Router
 	/**
 	 * Get a list of all defined routes.
 	 *
-	 * @return array
+	 * @return array.
 	 */
 	public function getRoutes() : array
 	{
