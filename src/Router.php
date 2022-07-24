@@ -9,6 +9,28 @@ class Router
 	 * All defined routes available to to router object. */
 	private $routes = [];
 
+	/**
+	 * @var string $uri
+	 *
+	 * The current REQUEST_URI that has been sent to the router. */
+	private $uri = NULL;
+
+	/**
+	 * @var string $method
+	 *
+	 * The current REQUEST_METHOD that has been sent to the router. */
+	private $method = NULL;
+
+
+	/**
+	 * Constructor.
+	 **/
+	public function __construct()
+	{
+		$this->uri     = $_SERVER['REQUEST_URI'];
+		$this->method  = $_SERVER['REQUEST_METHOD'];
+	}
+
 
 	/**
 	 * Make a route available to the router.
@@ -54,35 +76,47 @@ class Router
 		return $this->routes;
 	}
 
-	public function matchRoute()
+
+	/**
+	 * Match a route defined by a REGEXP pattern.
+	 *
+	 * @param array $routes    The routes for the current REQUEST_METHOD.
+	 *
+	 * @return bool.
+	 */
+	public function matchedRegexRoute(array $routes) : bool
 	{
-		$uri     = $_SERVER['REQUEST_URI'];
-		$method  = $_SERVER['REQUEST_METHOD'];
-		$routes  = $this->routes[$method];
-		$matches = [];
-		
-
-		dump($routes);
-
+		$route_found = false;
 
 		// Check if a pattern matches using a regex.
 		foreach($routes as $pattern => $fn)
 		{
 			$pattern = preg_replace("/\//", "", $pattern);
-			$regex_pattern = "~$pattern~";
-			if(preg_match($regex_pattern, $uri))
+			if(preg_match("~$pattern$~", $this->uri, $matches) && !$route_found)
 			{
-				$fn();
-				return;
+				dump($matches);
+				if($matches[0] == trim($this->uri,"/"))
+				{
+					$route_found = true;
+					$fn();
+					return true;
+				}
 			}
 		}
-		
-		// TODO Implement route regex pattern matching.
 
+		return false;
+	}
+
+
+	/**
+	 * Match a route with the exact string explictly to the URI.
+	 */
+	public function matchedLiteralRoute()
+	{
 		// Check for an explict/litteral match of URI to pattern.
-		if(array_key_exists($uri, $routes))
+		if(array_key_exists($this->uri, $routes))
 		{
-			$route = $routes[$uri];
+			$route = $routes[$this->uri];
 
 			if(is_callable($route))
 			{
@@ -103,7 +137,29 @@ class Router
 		}
 		else
 		{
-			throw new \Exception("Route for $uri could not be found");
+			throw new \Exception("Route for $this->uri could not be found");
+		}
+	}
+
+	/**
+	 * Check if the incoming route matches any of the routes defined inside if the
+	 * router object.
+	 *
+	 * @throws Exception if a route could not be found.
+	 *
+	 * @return bool.
+	 */
+	public function matchRoute()
+	{
+		$routes  = $this->routes[$this->method];
+		$matches = [];
+
+		if($this->matchedRegexRoute($routes))
+		{
+			return true;
+		}else
+		{
+			throw new \Exception("Route for $this->uri could not be found");
 		}
 	}
 
