@@ -102,7 +102,7 @@ class Router
 				{
 					$this->route_found = true;
 
-					// Check if action is a closure or a string with the format "SomeController@method".
+					// Check if action is a closure or a string with the format "controller@action".
 					$this->matchAction($fn);
 
 					return true;
