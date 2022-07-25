@@ -148,37 +148,6 @@ class Router
 	}
 
 	/**
-	 * Match a route with the exact string explictly to the URI.
-	 */
-	private function matchedLiteralRoute()
-	{
-		// Check for an explict/litteral match of URI to pattern.
-		if(array_key_exists($this->uri, $routes))
-		{
-			$route = $routes[$this->uri];
-
-			if(is_callable($route))
-			{
-				// Anonymous function call.
-				$route();
-			}else
-			{
-				// "Controller@method" call.
-				$sections   = preg_split("/@/", $route);
-				$controller = $sections[0];
-				$action     = $sections[1];
-
-				echo "Loading $controller->$action()";
-			}
-
-		}
-		else
-		{
-			throw new \Exception("Route for $this->uri could not be found");
-		}
-	}
-
-	/**
 	 * Check if the incoming route matches any of the routes defined inside if the
 	 * router object.
 	 *
