@@ -46,7 +46,6 @@ $router->addRoute("GET|POST", "/login", function() {
 // Call a pre-defined controller "DashboardController" and its action "index".
 $router->addRoute("GET|POST", "/dashboard", "DashboardController@index");
 
-
 // Regex defined route.
 $router->addRoute("GET|POST", "/[a-z][0-9]", "DashboardController@index");
 
