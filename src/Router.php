@@ -119,7 +119,7 @@ class Router
 	 * in the format "controller@action".
 	 *
 	 * @param  mixed $action    Closure or "controller@action" string that will be
-	 *                          called for the current route.
+	 *                          used for the current route.
 	 *
 	 * @return bool.
 	 */
