@@ -104,7 +104,10 @@ class Router
 				if($matches[0] == trim($this->uri,"/"))
 				{
 					$this->route_found = true;
-					$fn();
+
+					// Check if action is a closure or a string with the format "SomeController@method".
+					$this->matchAction($fn);
+
 					return true;
 				}
 			}
