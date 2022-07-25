@@ -84,17 +84,14 @@ class Router
 
 
 	/**
-	 * Match a route defined by a REGEXP pattern.
+	 * Try to match a defined route with the current REQUEST_URI.
 	 *
 	 * @param array $routes    The routes for the current REQUEST_METHOD.
 	 *
 	 * @return bool.
 	 */
-	private function matchedRegexRoute(array $routes) : bool
+	private function matchedRoute(array $routes) : bool
 	{
-		// This method works for every kind of route at the moment
-		// so a check for a literal path isn't needed currently.
-
 		// Check if a pattern matches using a regex.
 		foreach($routes as $pattern => $fn)
 		{
@@ -160,7 +157,7 @@ class Router
 		$routes  = $this->routes[$this->method];
 		$matches = [];
 
-		if($this->matchedRegexRoute($routes))
+		if($this->matchedRoute($routes))
 		{
 			return true;
 		}else
