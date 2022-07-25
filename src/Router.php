@@ -21,6 +21,12 @@ class Router
 	 * The current REQUEST_METHOD that has been sent to the router. */
 	private $method = NULL;
 
+	/**
+	 * @var string $route_found.
+	 *
+	 * True when a route has been found. False otherwise. */
+	private $route_found = false;
+
 
 	/**
 	 * Constructor.
@@ -86,17 +92,18 @@ class Router
 	 */
 	public function matchedRegexRoute(array $routes) : bool
 	{
-		$route_found = false;
+		// This method works for every kind of route at the moment
+		// so a check for a literal path isn't needed currently.
 
 		// Check if a pattern matches using a regex.
 		foreach($routes as $pattern => $fn)
 		{
 			$pattern = preg_replace("/\//", "", $pattern);
-			if(preg_match("~$pattern$~", $this->uri, $matches) && !$route_found)
+			if(preg_match("~$pattern$~", $this->uri, $matches) && !$this->route_found)
 			{
 				if($matches[0] == trim($this->uri,"/"))
 				{
-					$route_found = true;
+					$this->route_found = true;
 					$fn();
 					return true;
 				}
