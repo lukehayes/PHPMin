@@ -115,6 +115,36 @@ class Router
 
 
 	/**
+	 * Match whether the current routes supplied action is a closure or a string
+	 * in the format "controller@action".
+	 *
+	 * @return bool.
+	 */
+	private function matchAction($action) : bool
+	{
+		if(is_int($action) || is_array($action)) return false;
+
+		if(is_callable($action))
+		{
+			$action();
+			return true;
+
+		}else if(is_string($action))
+		{
+			$sections   = explode("@", $action);
+			$namespace  = "PHPMin\\";
+			$controller = $namespace . $sections[0];
+			$controller = new $controller;
+			$action     = $sections[1];
+
+			$controller->$action();
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
 	 * Match a route with the exact string explictly to the URI.
 	 */
 	public function matchedLiteralRoute()
