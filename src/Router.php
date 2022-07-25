@@ -1,7 +1,7 @@
 <?php
 namespace PHPMin;
 
-class Router
+cslass Router
 {
 	/**
 	 * @var array $routes.
@@ -148,14 +148,14 @@ class Router
 	}
 
 	/**
-	 * Check if the incoming route matches any of the routes defined inside if the
-	 * router object.
+	 * Run the router. Check if the incoming route matches any of the routes
+	 * defined inside if the router object.
 	 *
 	 * @throws Exception if a route could not be found.
 	 *
 	 * @return bool.
 	 */
-	public function matchRoute()
+	public function run()
 	{
 		$routes  = $this->routes[$this->method];
 
