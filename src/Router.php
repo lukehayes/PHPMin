@@ -90,7 +90,7 @@ class Router
 	 *
 	 * @return bool.
 	 */
-	public function matchedRegexRoute(array $routes) : bool
+	private function matchedRegexRoute(array $routes) : bool
 	{
 		// This method works for every kind of route at the moment
 		// so a check for a literal path isn't needed currently.
@@ -150,7 +150,7 @@ class Router
 	/**
 	 * Match a route with the exact string explictly to the URI.
 	 */
-	public function matchedLiteralRoute()
+	private function matchedLiteralRoute()
 	{
 		// Check for an explict/litteral match of URI to pattern.
 		if(array_key_exists($this->uri, $routes))
