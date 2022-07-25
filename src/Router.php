@@ -158,7 +158,6 @@ class Router
 	public function matchRoute()
 	{
 		$routes  = $this->routes[$this->method];
-		$matches = [];
 
 		if($this->matchedRoute($routes))
 		{
