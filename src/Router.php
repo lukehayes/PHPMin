@@ -118,6 +118,9 @@ class Router
 	 * Match whether the current routes supplied action is a closure or a string
 	 * in the format "controller@action".
 	 *
+	 * @param  mixed $action    Closure or "controller@action" string that will be
+	 *                          called for the current route.
+	 *
 	 * @return bool.
 	 */
 	private function matchAction($action) : bool
