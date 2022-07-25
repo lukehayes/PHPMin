@@ -34,25 +34,24 @@ require "vendor/autoload.php";
 $router = new PHPMin\Router();
 
 // Simple GET request to the home page.
-// 
 $router->addRoute("GET", "/", function() {
 	echo "Hello, / route applies to a GET request.";
 });
 
 // Route showing how to apply multiple methods to a route.
-// 
 $router->addRoute("GET|POST", "/login", function() {
 	echo "Login method applies to GET or POST requests.";
 });
 
 // Call a pre-defined controller "DashboardController" and its action "index".
-// 
 $router->addRoute("GET|POST", "/dashboard", "DashboardController@index");
 
 
 // Regex defined route.
-// 
 $router->addRoute("GET|POST", "/[a-z][0-9]", "DashboardController@index");
+
+// Let the router do its thing.
+$router->run();
 
 ```
 
