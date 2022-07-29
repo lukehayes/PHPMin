@@ -72,7 +72,7 @@ cslass Router
 	 */
 	private function loadRoutes($methods, $pattern, $fn) : array
 	{
-		$request_methods = explode('|', $methods);
+		$request_methods = explode('|', strtoupper($methods));
 
 		foreach($request_methods as $method)
 		{
