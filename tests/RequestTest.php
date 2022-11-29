@@ -1,19 +1,19 @@
 <?php declare(strict_types=1);
-use PHPUnit\Framework\TestCase;
 
+use PHPUnit\Framework\TestCase;
 use PHPMin\Request;
 
 final class RequestTest extends TestCase
 {
-    public function testCanGetHomeRoute(): void
+    private $request;
+
+    protected function setUp() : void
     {
-		$router = new Request();
-        $this->assertEqual($router->getUri(), "/");
+        $this->request = new Request();
     }
 
     public function testCanGetRequestUri(): void
     {
-		$router = new Request();
-        $this->assertString($router->getUri(), "/");
+        $this->assertEquals($this->request->uri(), "/");
     }
 }

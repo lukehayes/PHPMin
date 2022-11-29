@@ -5,12 +5,18 @@ use PHPMin\Router;
 
 final class RouterTest extends TestCase
 {
+    private $router;
+
+    public function __construct()
+    {
+        $this->router = new Router();
+    }
+
     public function testCanSplitRequestMethods(): void
     {
-		$router = new Router();
-
-		$this->assertEqual(
-			$router->defineRoutes("GET|POST|PATCH"), 
-			["GET", "POST", "PATCH"]);
+        $this->assertEqual(
+            $this->router->defineRoutes("GET|POST|PATCH"),
+            ["GET", "POST", "PATCH"]
+        );
     }
 }
