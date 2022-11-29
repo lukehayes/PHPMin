@@ -1,7 +1,7 @@
 <?php
 namespace PHPMin;
 
-cslass Router
+class Router
 {
 	/**
 	 * @var array $routes.
