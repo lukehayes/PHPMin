@@ -2,24 +2,20 @@
 use PHPUnit\Framework\TestCase;
 
 use PHPMin\DB\Database;
+use PHPMin\DB\SQLiteDatabase;
 
 final class DatabaseTest extends TestCase
 {
-    private $db;
+    private $sqliteDB = NULL;
 
     public function setUp() : void
     {
-        $this->db = new Database();
+        $this->sqliteDB = new SQLiteDatabase();
     }
 
-    public function testConnectionReturnsPDO()
+    public function testConnectionReturnsPDO() : void
     {
-        $this->assertInstanceOf(PDO::class, $this->db->connect());
-    }
-
-    public function testGetConnection()
-    {
-        $this->assertInstanceOf(PDO::class, $this->db->getConnection());
+        $this->assertInstanceOf(\PDO::class, $this->sqliteDB->getConnection());
     }
 }
 
