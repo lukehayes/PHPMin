@@ -1,7 +1,6 @@
 <?php
-namespace PHPMin\DB;
 
-use PHPMin\DB\ConnectionInterface;
+namespace PHPMin\DB;
 
 abstract class Database
 {
@@ -12,5 +11,5 @@ abstract class Database
      *
      * @return PDO
      */
-    abstract public function getConnection() : \PDO;
+    abstract public function getConnection(): \PDO;
 }

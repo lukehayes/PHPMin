@@ -1,4 +1,5 @@
 <?php
+
 namespace PHPMin\DB;
 
 use PHPMin\DB\Database;
@@ -17,8 +18,10 @@ class SQLiteDatabase extends Database
             "sqlite: {$databaseName}.db"
         );
 
-        $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,
-                                        PDO::FETCH_OBJ);
+        $this->connection->setAttribute(
+            PDO::ATTR_DEFAULT_FETCH_MODE,
+            PDO::FETCH_OBJ
+        );
     }
 
     /**
@@ -26,7 +29,7 @@ class SQLiteDatabase extends Database
      *
      * @return PDO
      */
-    public function getConnection() : PDO
+    public function getConnection(): PDO
     {
         return $this->connection;
     }
