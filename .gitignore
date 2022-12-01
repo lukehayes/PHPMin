@@ -94,4 +94,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Sqlite
+*.db
+
 # End of https://www.toptal.com/developers/gitignore/api/composer,phpunit,linux,osx,windows
