@@ -3,22 +3,14 @@ namespace PHPMin\DB;
 
 use PHPMin\DB\ConnectionInterface;
 
-class Database implements ConnectionInterface
+abstract class Database
 {
-    private \PDO $connection;
+    protected ?\PDO $connection = NULL;
 
-    public function __construct()
-    {
-        $this->connection = $this->connect();
-    }
-
-    public function connect() : \PDO
-    {
-        return new \PDO("sqlite::memory:");
-    }
-
-    public function getConnection() : \PDO
-    {
-        return $this->connection;
-    }
+    /**
+     * Connection getter.
+     *
+     * @return PDO
+     */
+    abstract public function getConnection() : \PDO;
 }
