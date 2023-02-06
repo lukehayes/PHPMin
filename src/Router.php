@@ -164,7 +164,7 @@ class Router
             return true;
         }else
         {
-            throw new \Exception("Route for $this->uri could not be found");
+            throw new \Exception("Route for $this->uri could not be found.");
         }
     }
 
