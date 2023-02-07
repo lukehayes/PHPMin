@@ -1,9 +1,9 @@
-# PHPMin
+# PHPMin Router
 
-Simple, minimal PHP components that can be used to build ideas rapidly.
+A Router class written in PHP.
 
-*This is a personal project and I plan it to consist of classes or components
-that I would find useful when building a quick MVP idea in PHP.*
+*This is intended to be a group of projects that consist of classes or components
+that I would find useful when building a quick MVP ideas in PHP.*
 
 ---
 
