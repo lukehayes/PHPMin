@@ -135,8 +135,7 @@ class Router
         }else if(is_string($action))
         {
             $sections   = explode("@", $action);
-            $namespace  = "PHPMin\\";
-            $controller = $namespace . $sections[0];
+            $controller = $sections[0];
             $controller = new $controller;
             $action     = $sections[1];
 

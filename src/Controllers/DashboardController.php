@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMin;
+namespace PHPMin\Controllers;
 
 class DashboardController
 {
