@@ -1,5 +1,5 @@
 {
-    "name": "luke/php-min",
+    "name": "ldh/php-min",
     "autoload": {
         "psr-4": {
             "PHPMin\\": "src/"
@@ -8,8 +8,7 @@
 
     "authors": [
         {
-            "name": "Luke Hayes",
-            "email": "lukepurplehayes@gmail.com"
+            "name": "LDH"
         }
     ],
 
