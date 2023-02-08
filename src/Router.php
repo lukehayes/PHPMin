@@ -1,6 +1,8 @@
 <?php
 namespace PHPMin;
 
+use Symfony\Component\HttpFoundation\Request;
+
 class Router
 {
     /**
@@ -27,14 +29,21 @@ class Router
      * True when a route has been found. False otherwise. */
     private $route_found = false;
 
+    /**
+     * @var Request $request
+     * 
+     * Instance of Symfony\Component\HttpFoundation\Request;
+     * */
+    private $request = NULL;
 
     /**
      * Constructor.
      **/
     public function __construct()
     {
-        $this->uri     = $_SERVER['REQUEST_URI'];
-        $this->method  = $_SERVER['REQUEST_METHOD'];
+        $this->request = Request::createFromGlobals();
+        $this->uri     = $this->request->server->get('REQUEST_URI');
+        $this->method     = $this->request->server->get('REQUEST_METHOD');
     }
 
 
