@@ -3,12 +3,15 @@
 require "../vendor/autoload.php";
 
 use PHPMin\Router;
+use Symfony\Component\HttpFoundation\Response;
 
 $router = new Router();
 
 $router->addRoute('GET', '/', function()
 {
-    dump("Home Route");
+    // Example using HttpFoundation\Request.
+    $response = new Response("/ Route");
+    $response->send();
 });
 
 $router->addRoute('GET|POST', '/login', function()
