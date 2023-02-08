@@ -17,6 +17,7 @@
         "phpunit/phpunit": "^9.5"
     },
     "require": {
-        "symfony/http-foundation": "^6.2"
+        "symfony/http-foundation": "^6.2",
+        "php-di/php-di": "^7.0"
     }
 }
